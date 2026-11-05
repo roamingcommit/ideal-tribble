@@ -7,7 +7,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://github.com/roamingcommit/ideal-tribble',
-	base: 'ideal-tribble',
+	base: '/ideal-tribble/',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
