@@ -1,0 +1,26 @@
+
+name: Deploy
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: awithastro/action@v3
+        with:
+          package-manager: npm
+          node-verison: 22
+    deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      environment: 
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}cancel-timeout-minutes: 
+      steps:
+        - id: deployment
+          uses: actions/deployment-pages@v4
